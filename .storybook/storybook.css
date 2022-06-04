@@ -1,0 +1,7 @@
+.sb-show-main.sb-main-padded {
+  transition: padding 0s !important;
+}
+
+#root {
+  height: 100%;
+}

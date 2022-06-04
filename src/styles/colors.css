@@ -1,0 +1,11 @@
+html {
+  --purple: #543A7B;
+  --red: #FF715B;
+  --green: #61988E;
+  --tan: #EFE7DA;
+  --off-white: #F0F4EF;
+  --grey: #777777;
+  --gray: var(--grey);
+  --light-grey: #BBB9B9;
+  --light-gray: var(--light-grey);
+}
