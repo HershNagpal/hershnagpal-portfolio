@@ -2,7 +2,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Icon } from './Icon';
 
 export default {
-    title: 'Design System/Atoms/Icon',
+    title: 'Icon',
     component: Icon,
   } as ComponentMeta<typeof Icon>;
 

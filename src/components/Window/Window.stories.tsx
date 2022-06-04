@@ -2,7 +2,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Window } from './Window';
 
 export default {
-    title: 'Design System/Atoms/Window',
+    title: 'Window',
     component: Window,
   } as ComponentMeta<typeof Window>;
 

@@ -1,14 +1,14 @@
 import styled from 'styled-components';
 import { IconName, getIcon } from '../Icon/Icon';
+import { WindowButton } from '../WindowButton/WindowButton';
 
 export const Window = ({iconName, type, windowTitle, textContent, onClose, onMinimize}: WindowProps) => 
 <WindowContainer>
   <MenuBar>
     <WindowTitle>{windowTitle}</WindowTitle>
     <ButtonContainer>
-      <WindowButton />
-      <WindowButton />
-      <WindowButton />
+      <WindowButton color={'#eeee45'} onClick={onMinimize}/>
+      <WindowButton color={'#e85454'} onClick={onClose}/>
     </ButtonContainer>
   </MenuBar>
   {type==='text' && <TextContent>
@@ -47,16 +47,6 @@ const ButtonContainer = styled.div`
   display: flex;
   flex-direction: row;
   gap: 5px;
-`;
-
-const WindowButton = styled.button`
-  border-width: 0px;
-  border-radius: 5px;
-  margin: 3px;
-  width: 20px;
-  height: 20px;
-  font-size: 16px;
-  font-weight: bold;
 `;
 
 const WindowContainer = styled.div`
