@@ -52,3 +52,13 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+
+@font-face {
+  font-family: "vt323";
+  src: url("../assets/fonts/VT323-Regular.ttf")
+}
+
+@font-face {
+  font-family: "fixedsys";
+  src: url("../assets/fonts/fixedsys.ttf")
+}
