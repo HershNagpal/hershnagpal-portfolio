@@ -9,7 +9,7 @@ export const Task = ({iconName, taskTitle, onClick}: TaskProps) => {
   const handleClick = () => {
     setIsOpen(!isOpen)
     onClick()
-  }
+  };
 
   return <TaskContainer 
     onClick={handleClick}
@@ -31,7 +31,7 @@ export const Task = ({iconName, taskTitle, onClick}: TaskProps) => {
     <TaskIcon alt='icon' src={getIcon(iconName)} />
     <TaskText>{taskTitle}</TaskText>
   </TaskContainer>
-}
+};
 
 export interface TaskProps {
   iconName: IconName
@@ -51,6 +51,9 @@ const TaskContainer = styled.div`
   border-bottom: var(--bottom-border);
   border-left: var(--left-border);
   border-right: var(--right-border);
+  width: fit-content;
+  min-width: 200px;
+  max-width: 500px;
 `;
 
 const TaskText = styled.p`

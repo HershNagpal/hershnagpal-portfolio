@@ -32,11 +32,13 @@ const IconContainer = styled.div`
   cursor: default;
   user-select: none;
   padding: 10px;
+  width: 150px;
 `;
 
 const IconText = styled.p`
   font-family: 'vt323';
-  font-size: 26px;
+  text-overflow: ellipsis;
+  font-size: 24px;
   color: white;
   white-space: nowrap;
   overflow: hidden;

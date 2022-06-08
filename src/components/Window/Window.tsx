@@ -11,9 +11,7 @@ export const Window = ({iconName, type, windowTitle, textContent, onClose, onMin
       <WindowButton color={'#e85454'} onClick={onClose}/>
     </ButtonContainer>
   </MenuBar>
-  {type==='text' && <TextContent>
-    {textContent}
-  </TextContent>}
+  {type==='text' && <TextContent defaultValue={textContent} />}
 
 </WindowContainer>;
 
@@ -35,12 +33,14 @@ const MenuBar = styled.div`
   justify-content: space-between;
   padding: 2px 5px;
   width: 100%;
+  cursor: grab;
 `;
 
 const WindowTitle = styled.div`
   font-family: 'vt323';
   font-size: 20px;
   color: white;
+  user-select: none;
 `;
 
 const ButtonContainer = styled.div`
@@ -64,14 +64,13 @@ const WindowContainer = styled.div`
   border-width: 3px;
   border-style: solid;
   z-index: 2;
-  max-width: 50vw;
-  max-height: 70vh;
+  /* width: 800px; */
   border-radius: 10px;
 `;
 
-const TextContent = styled.div`
+const TextContent = styled.textarea`
   padding: 5px;
-  width: 100%;
+  width: 1000px;
   height: 100%;
   background-color: white;
   overflow: scroll;
@@ -82,4 +81,5 @@ const TextContent = styled.div`
   border-radius: 0px 0px 0px 10px;
   font-family: 'fixedsys';
   font-size: 20px;
+  outline: none;
 `;
