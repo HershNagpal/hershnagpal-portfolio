@@ -4,16 +4,20 @@ import iconLink from '../../assets/images/icons/link.svg';
 import iconPdf from '../../assets/images/icons/pdf.svg';
 import iconText from '../../assets/images/icons/text.svg';
 
-export const Icon = ({iconName, onClick, onDoubleClick, text}: IconProps) => 
-<IconContainer onDoubleClick={onDoubleClick} onClick={onClick}>
+export const Icon = ({iconName, onClick, onDoubleClick, text, id}: IconProps) => 
+<IconContainer 
+  onDoubleClick={() => {if (onDoubleClick) onDoubleClick(id)}} 
+  onClick={() => {if (onClick) onClick(id)}}
+>
   <IconImage alt='icon' src={getIcon(iconName)} />
   <IconText>{text}</IconText>
 </IconContainer>;
 
 export interface IconProps {
+  id: number,
   iconName: IconName
-  onDoubleClick?: () => void
-  onClick?: () => void
+  onDoubleClick?: (id: number) => void
+  onClick?: (id: number) => void
   text: string
 }; 
 

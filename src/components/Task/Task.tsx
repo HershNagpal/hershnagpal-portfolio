@@ -2,25 +2,26 @@ import { useState } from "react";
 import styled, { CSSProperties } from "styled-components";
 import { IconName, getIcon } from "../Icon/Icon";
 
-export const Task = ({iconName, taskTitle, onClick}: TaskProps) => {
+export const Task = ({iconName, taskTitle, toggleTask, windowOpen, id}: TaskProps) => {
 
   const [isOpen, setIsOpen] = useState(false);
 
   const handleClick = () => {
-    setIsOpen(!isOpen)
-    onClick()
+    setIsOpen(!isOpen);
+    toggleTask(id);
+    console.log(toggleTask)
   };
 
   return <TaskContainer 
     onClick={handleClick}
     style={{
-      ...(isOpen && { 
+      ...(windowOpen && { 
         '--top-border': 'inset 2px rgb(12, 5, 77)',
         '--bottom-border': 'inset 2px white',
         '--left-border': 'inset 2px rgb(12, 5, 77)',
         '--right-border': 'inset 2px white',
       }),
-      ...(!isOpen && { 
+      ...(!windowOpen && { 
         '--top-border': 'ridge 2px white',
         '--bottom-border': 'ridge 2px rgb(12, 5, 77)',
         '--left-border': 'ridge 2px white',
@@ -34,9 +35,12 @@ export const Task = ({iconName, taskTitle, onClick}: TaskProps) => {
 };
 
 export interface TaskProps {
+  id: number
   iconName: IconName
   taskTitle: string
-  onClick: () => void
+  inTaskbar: boolean
+  windowOpen: boolean
+  toggleTask: (id: number) => void
 };
 
 const TaskContainer = styled.div`

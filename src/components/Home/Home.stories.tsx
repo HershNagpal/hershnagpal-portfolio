@@ -16,16 +16,12 @@ Default.args = {
   taskState: [
     {
       id: 0,
-      open: true,
+      windowOpen: true,
+      inTaskbar: true,
       focused: true,
       taskTitle: 'About.txt',
       iconName: 'text',
       link: undefined,
-      onClickTask: () => {},
-      onCloseWindow: () => {},
-      onMinimizeWindow: () => {},
-      onClickIcon: () => {},
-      onDoubleClickIcon: () => {},
       windowTextContent: loremIpsum,
       windowType: 'text',
     }

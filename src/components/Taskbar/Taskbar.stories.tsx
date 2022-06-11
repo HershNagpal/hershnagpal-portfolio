@@ -13,19 +13,28 @@ export const Default = Template.bind({});
 Default.args = {
   tasks: [
     {
+      id: 1,
       iconName: 'text',
       taskTitle: 'About Me.txt',
-      onClick: () => {},
+      toggleTask: () => {},
+      inTaskbar: true,
+      windowOpen: true,
     },
     {
+      id: 2,
       iconName: 'text',
       taskTitle: 'About Me.txt',
-      onClick: () => {},
+      toggleTask: () => {},
+      inTaskbar: true,
+      windowOpen: true,
     },
     {
+      id: 3,
       iconName: 'text',
       taskTitle: 'About Me.txt',
-      onClick: () => {},
+      toggleTask: () => {},
+      inTaskbar: true,
+      windowOpen: true,
     },
   ]
 };

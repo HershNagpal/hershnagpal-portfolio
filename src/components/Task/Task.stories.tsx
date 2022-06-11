@@ -10,7 +10,8 @@ const Template: ComponentStory<typeof Task> = (args) => <Task {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
+  id: 1,
   iconName: 'text',
   taskTitle: 'About Me.txt',
-  onClick: () => {},
+  toggleTask: () => {},
 };

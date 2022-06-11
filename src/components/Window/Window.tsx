@@ -1,27 +1,35 @@
-import styled from 'styled-components';
-import { IconName, getIcon } from '../Icon/Icon';
+import styled, { CSSProperties } from 'styled-components';
+import { IconName } from '../Icon/Icon';
 import { WindowButton } from '../WindowButton/WindowButton';
 
-export const Window = ({iconName, type, windowTitle, textContent, onClose, onMinimize}: WindowProps) => 
-<WindowContainer>
+export const Window = ({id, isOpen, iconName, isFocused, type, windowTitle, textContent, onClose, onMinimize}: WindowProps) => 
+<WindowContainer style={
+  {
+    'display': isOpen ? 'auto' : 'none',
+    'zIndex': isFocused ? '2' : '1'
+  } as CSSProperties
+}>
+
   <MenuBar>
     <WindowTitle>{windowTitle}</WindowTitle>
     <ButtonContainer>
-      <WindowButton color={'#eeee45'} onClick={onMinimize}/>
-      <WindowButton color={'#e85454'} onClick={onClose}/>
+      <WindowButton color={'#eeee45'} onClick={() => onMinimize(id)}/>
+      <WindowButton color={'#e85454'} onClick={() => onClose(id)}/>
     </ButtonContainer>
   </MenuBar>
   {type==='text' && <TextContent defaultValue={textContent} />}
-
-</WindowContainer>;
+</WindowContainer>
 
 export interface WindowProps {
+  id: number
+  isFocused: boolean
+  isOpen: boolean
   iconName: IconName
   type: WindowType
   windowTitle: string
   textContent?: string
-  onClose: () => void
-  onMinimize: () => void
+  onClose: (taskId: number) => void
+  onMinimize: (taskId: number) => void
 };
 
 export type WindowType = 'text' | 'pdf' | 'folder';

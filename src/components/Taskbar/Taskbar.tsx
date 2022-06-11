@@ -5,7 +5,7 @@ export const Taskbar = ({tasks}: TaskbarProps) => {
 
   return <TaskbarContainer>
     {tasks.map((task, index) => (
-      <Task key={index} {...task} />
+      task.inTaskbar && <Task key={index} {...task} />
     ))}
   </TaskbarContainer>
 }
