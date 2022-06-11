@@ -1,35 +1,44 @@
-import styled, { CSSProperties } from 'styled-components';
+import styled from 'styled-components';
 import { IconName } from '../Icon/Icon';
 import { WindowButton } from '../WindowButton/WindowButton';
+import Draggable from 'react-draggable';
 
-export const Window = ({id, isOpen, iconName, isFocused, type, windowTitle, textContent, onClose, onMinimize}: WindowProps) => 
-<WindowContainer style={
-  {
-    'display': isOpen ? 'auto' : 'none',
-    'zIndex': isFocused ? '2' : '1'
-  } as CSSProperties
-}>
+export const Window = ({id, iconName, isFocused, type, windowTitle, textContent, 
+  onClose, onMinimize, xPosition, yPosition, setWindowPosition}: WindowProps) => {
 
-  <MenuBar>
-    <WindowTitle>{windowTitle}</WindowTitle>
-    <ButtonContainer>
-      <WindowButton color={'#eeee45'} onClick={() => onMinimize(id)}/>
-      <WindowButton color={'#e85454'} onClick={() => onClose(id)}/>
-    </ButtonContainer>
-  </MenuBar>
-  {type==='text' && <TextContent defaultValue={textContent} />}
-</WindowContainer>
+  const handleMinimize = () => {
+    onMinimize(id)
+  };
 
+  return <Draggable 
+    bounds='parent' 
+    handle='.handle'
+    defaultPosition={xPosition && yPosition ? {x: xPosition, y: yPosition}: undefined}
+  >
+    <WindowContainer>
+      <MenuBar className='handle'>
+        <WindowTitle>{windowTitle}</WindowTitle>
+        <ButtonContainer>
+          <WindowButton color={'#eeee45'} onClick={() => handleMinimize()}/>
+          <WindowButton color={'#e85454'} onClick={() => onClose(id)}/>
+        </ButtonContainer>
+      </MenuBar>
+      {type==='text' && <TextContent defaultValue={textContent} />}
+    </WindowContainer>
+  </Draggable>
+};
 export interface WindowProps {
   id: number
   isFocused: boolean
-  isOpen: boolean
   iconName: IconName
   type: WindowType
   windowTitle: string
   textContent?: string
   onClose: (taskId: number) => void
   onMinimize: (taskId: number) => void
+  setWindowPosition: (taskId: number, x: number, y: number) => void
+  xPosition?: number
+  yPosition?: number
 };
 
 export type WindowType = 'text' | 'pdf' | 'folder';
@@ -71,15 +80,17 @@ const WindowContainer = styled.div`
   border-left: white;
   border-width: 3px;
   border-style: solid;
-  z-index: 2;
-  /* width: 800px; */
+  z-index: 1;
   border-radius: 10px;
 `;
 
 const TextContent = styled.textarea`
   padding: 5px;
-  width: 1000px;
-  height: 100%;
+  width: 700px;
+  height: 200px;
+  min-height: 100px;
+  min-width: 200px;
+  max-height: 100%;
   background-color: white;
   overflow: scroll;
   border-top: inset 3px black;

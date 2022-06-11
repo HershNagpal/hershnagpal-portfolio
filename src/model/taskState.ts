@@ -11,4 +11,6 @@ export type TaskState = {
   link?: string
   windowTextContent?: string
   windowType: WindowType
+  xPosition?: number
+  yPosition?: number
 };

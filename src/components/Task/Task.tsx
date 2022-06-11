@@ -9,7 +9,6 @@ export const Task = ({iconName, taskTitle, toggleTask, windowOpen, id}: TaskProp
   const handleClick = () => {
     setIsOpen(!isOpen);
     toggleTask(id);
-    console.log(toggleTask)
   };
 
   return <TaskContainer 

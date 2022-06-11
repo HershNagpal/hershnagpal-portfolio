@@ -4,9 +4,7 @@ import './styles/colors.css';
 import './styles/global.css';
 
 function App() {
-  return <>
-    <Home taskState={defaultAppState}/>
-  </>;
+  return <Home taskState={defaultAppState}/>;
 };
 
 export default App;

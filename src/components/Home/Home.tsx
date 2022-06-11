@@ -9,6 +9,14 @@ export const Home = ({taskState}: HomeProps) => {
   
   const [localTaskState, setLocalTaskState] = useState<TaskState[]>(taskState);
 
+  const setWindowPosition = (taskId: number, x: number, y: number) => (
+    setLocalTaskState(localTaskState.map((task)=>(
+      task.id === taskId 
+        ? {...task, xPosition: x, yPosition: y}
+        : task
+    )))
+  );
+
   const minimizeTask = (taskId: number) => (
     setLocalTaskState(localTaskState.map((task)=>(
       task.id === taskId 
@@ -20,7 +28,13 @@ export const Home = ({taskState}: HomeProps) => {
   const closeTask = (taskId: number) => (
     setLocalTaskState(localTaskState.map((task)=>(
       task.id === taskId 
-        ? {...task, inTaskbar: false, windowOpen: false, focused: false}
+        ? {...task, 
+            inTaskbar: false, 
+            windowOpen: false, 
+            focused: false,
+            xPosition: 0,
+            yPosition: 0,
+          }
         : task
     )))
   );
@@ -66,14 +80,16 @@ export const Home = ({taskState}: HomeProps) => {
       task.windowOpen && <Window 
         id={task.id}
         isFocused={task.focused}
-        isOpen={task.windowOpen}
         key={index}
         windowTitle={task.taskTitle}
         type={task.windowType}
         iconName={task.iconName}
         onClose={closeTask}
         onMinimize={minimizeTask}
+        setWindowPosition={setWindowPosition}
         textContent={task.windowTextContent}
+        xPosition={task.xPosition}
+        yPosition={task.yPosition}
       />
     ))}
 
@@ -97,8 +113,9 @@ export interface HomeProps {
 };
 
 const HomeBackground = styled.div`
-  height: 100%;
-  width: 100%;
+  min-height: 100vh;
+  min-width: 100vw;
+  background-color: aliceblue;
   display: flex;
   flex-direction: column;
 `;
