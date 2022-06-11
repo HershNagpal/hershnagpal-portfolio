@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { IconName } from '../Icon/Icon';
 import { WindowButton } from '../WindowButton/WindowButton';
-import Draggable from 'react-draggable';
+import Draggable, { DraggableData, DraggableEventHandler } from 'react-draggable';
 
 export const Window = ({id, iconName, isFocused, type, windowTitle, textContent, 
   onClose, onMinimize, xPosition, yPosition, setWindowPosition}: WindowProps) => {
@@ -10,10 +10,17 @@ export const Window = ({id, iconName, isFocused, type, windowTitle, textContent,
     onMinimize(id)
   };
 
+  const handleStop: DraggableEventHandler = (e, data) => {
+    const x = data.deltaX + data.lastX
+    const y = data.deltaY + data.lastY
+    setWindowPosition(id, x, y)
+  }
+
   return <Draggable 
     bounds='parent' 
     handle='.handle'
     defaultPosition={xPosition && yPosition ? {x: xPosition, y: yPosition}: undefined}
+    onStop={handleStop}
   >
     <WindowContainer>
       <MenuBar className='handle'>
