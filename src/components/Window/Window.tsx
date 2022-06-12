@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { CSSProperties } from 'styled-components';
 import { IconName } from '../Icon/Icon';
 import { WindowButton } from '../WindowButton/WindowButton';
 import Draggable, { DraggableEventHandler } from 'react-draggable';
@@ -23,7 +23,18 @@ export const Window = ({id, iconName, isFocused, type, windowTitle, textContent,
     defaultPosition={xPosition && yPosition ? {x: xPosition, y: yPosition}: undefined}
     onStop={handleStop}
   >
-    <WindowContainer>
+    <WindowContainer
+      style={{
+        ...(type === 'text' && { 
+          '--window-height': '500px',
+          '--window-width': '700px',
+        }),
+        ...(type === 'pdf' && { 
+          '--window-height': '600px',
+          '--window-width': '600px',
+        }),
+      } as CSSProperties }
+    >
       <MenuBar className='handle'>
         <MenuBarTitle>
           <MenuBarIcon src={getIcon(iconName)} />
@@ -35,7 +46,7 @@ export const Window = ({id, iconName, isFocused, type, windowTitle, textContent,
         </ButtonContainer>
       </MenuBar>
       {type==='text' && textContent && <TextContent defaultValue={textContent} />}
-      {type==='pdf' && pdfSource && <PDFEmbed src={pdfSource}/>}
+      {type==='pdf' && pdfSource && <PDFEmbed src={pdfSource+'#zoom=70'} />}
     </WindowContainer>
   </Draggable>
 };
@@ -51,14 +62,18 @@ export interface WindowProps {
   setWindowPosition: (taskId: number, x: number, y: number) => void
   xPosition?: number
   yPosition?: number
-  pdfSource?: any
+  pdfSource?: string
 };
 
 export type WindowType = 'text' | 'pdf' | 'folder';
 
-const PDFEmbed = styled.embed`
-  width: 300px;
-  height: 300px;
+const PDFEmbed = styled.iframe`
+  margin: 3px;
+  width: 100%;
+  object-fit: scale-down;
+  height: var(--window-height);
+  width: var(--window-width);
+  border-radius: 0px 0px 8px 8px;
 `;
 
 const MenuBarIcon = styled.img`
@@ -115,8 +130,8 @@ const WindowContainer = styled.div`
 
 const TextContent = styled.textarea`
   padding: 5px;
-  width: 700px;
-  height: 200px;
+  height: var(--window-height);
+  width: var(--window-width);
   min-height: 100px;
   min-width: 200px;
   max-height: 100%;
@@ -126,7 +141,7 @@ const TextContent = styled.textarea`
   border-left: inset 3px black;
   border-bottom: inset 3px white;
   border-right: inset 3px white;
-  border-radius: 0px 0px 0px 10px;
+  border-radius: 0px 0px 8px 8px;
   font-family: 'fixedsys';
   font-size: 20px;
   outline: none;

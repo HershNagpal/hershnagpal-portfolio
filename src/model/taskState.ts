@@ -13,4 +13,5 @@ export type TaskState = {
   windowType: WindowType
   xPosition?: number
   yPosition?: number
+  pdfSource?: string
 };

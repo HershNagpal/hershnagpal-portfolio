@@ -2,7 +2,7 @@ import { Home } from "./components/Home/Home";
 import { TaskState } from "./model/taskState";
 import './styles/colors.css';
 import './styles/global.css';
-import resume from './assets/content/HNagpal-Resume.pdf';
+import resume from './assets/content/Hersh_Nagpal_Resume.pdf';
 
 function App() {
   return <Home taskState={defaultAppState}/>;
