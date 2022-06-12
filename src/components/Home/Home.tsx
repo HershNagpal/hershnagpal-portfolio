@@ -4,6 +4,7 @@ import { Taskbar } from "../Taskbar/Taskbar";
 import { TaskState } from "../../model/taskState";
 import { Window } from "../Window/Window";
 import { useState } from "react";
+import { CRTEffect, MovingDistortion, StartupWhite, StartupBlack, InputText, FastMovingDistortion } from "../Animation/Animation";
 
 export const Home = ({taskState}: HomeProps) => {
   
@@ -65,6 +66,12 @@ export const Home = ({taskState}: HomeProps) => {
 
   return <HomeBackground>
     <CRTEffect />
+    <MovingDistortion />
+    <StartupWhite />
+    <StartupBlack />
+    <InputText>INPUT 1</InputText>
+    <FastMovingDistortion />
+
     {localTaskState.map((task, index) => (
       <Icon 
         id={task.id}
@@ -114,23 +121,24 @@ export interface HomeProps {
 };
 
 const HomeBackground = styled.div`
+
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%; }
+    50% {
+      background-position: 100% 50%; }
+    100% {
+      background-position: 0% 50%; } 
+  }
+
   min-height: 100vh;
   min-width: 100vw;
   background-color: aliceblue;
   display: flex;
   flex-direction: column;
-`;
-
-const CRTEffect = styled.div`
-  content: " ";
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  background: linear-gradient(rgba(18, 16, 16, 0) 60%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-  z-index: 100;
-  background-size: 100% 2px, 3px 100%;
-  pointer-events: none;
+  background:linear-gradient(#FF367F,transparent);
+  background-color: var(--blue);
+  animation: gradient 15s ease infinite;
+  background: linear-gradient(-45deg, var(--orange), var(--blue), var(--pink));
+  background-size: 400% 400%;
 `;

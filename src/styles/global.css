@@ -62,3 +62,8 @@ table {
   font-family: "fixedsys";
   src: url("../assets/fonts/fixedsys.ttf")
 }
+
+@font-face {
+  font-family: "vcr";
+  src: url("../assets/fonts/VCR.ttf")
+}
