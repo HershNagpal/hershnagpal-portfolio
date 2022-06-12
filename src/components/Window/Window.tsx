@@ -1,9 +1,10 @@
 import styled from 'styled-components';
 import { IconName } from '../Icon/Icon';
 import { WindowButton } from '../WindowButton/WindowButton';
-import Draggable, { DraggableData, DraggableEventHandler } from 'react-draggable';
+import Draggable, { DraggableEventHandler } from 'react-draggable';
+import { getIcon } from '../Icon/Icon';
 
-export const Window = ({id, iconName, isFocused, type, windowTitle, textContent, 
+export const Window = ({id, iconName, isFocused, type, windowTitle, textContent, pdfSource,
   onClose, onMinimize, xPosition, yPosition, setWindowPosition}: WindowProps) => {
 
   const handleMinimize = () => {
@@ -24,13 +25,17 @@ export const Window = ({id, iconName, isFocused, type, windowTitle, textContent,
   >
     <WindowContainer>
       <MenuBar className='handle'>
-        <WindowTitle>{windowTitle}</WindowTitle>
+        <MenuBarTitle>
+          <MenuBarIcon src={getIcon(iconName)} />
+          <WindowTitle>{windowTitle}</WindowTitle>
+        </MenuBarTitle>
         <ButtonContainer>
           <WindowButton color={'#eeee45'} onClick={() => handleMinimize()}/>
           <WindowButton color={'#e85454'} onClick={() => onClose(id)}/>
         </ButtonContainer>
       </MenuBar>
-      {type==='text' && <TextContent defaultValue={textContent} />}
+      {type==='text' && textContent && <TextContent defaultValue={textContent} />}
+      {type==='pdf' && pdfSource && <PDFEmbed src={pdfSource}/>}
     </WindowContainer>
   </Draggable>
 };
@@ -46,9 +51,25 @@ export interface WindowProps {
   setWindowPosition: (taskId: number, x: number, y: number) => void
   xPosition?: number
   yPosition?: number
+  pdfSource?: any
 };
 
 export type WindowType = 'text' | 'pdf' | 'folder';
+
+const PDFEmbed = styled.embed`
+  width: 300px;
+  height: 300px;
+`;
+
+const MenuBarIcon = styled.img`
+  width: 20px;
+  pointer-events: none;
+`;
+
+const MenuBarTitle = styled.div`
+  display: flex;
+  gap: 10px;
+`;
 
 const MenuBar = styled.div`
   display: flex;
@@ -58,6 +79,7 @@ const MenuBar = styled.div`
   padding: 2px 5px;
   width: 100%;
   cursor: grab;
+  user-select: none;
 `;
 
 const WindowTitle = styled.div`

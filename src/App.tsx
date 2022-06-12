@@ -2,6 +2,7 @@ import { Home } from "./components/Home/Home";
 import { TaskState } from "./model/taskState";
 import './styles/colors.css';
 import './styles/global.css';
+import resume from './assets/content/HNagpal-Resume.pdf';
 
 function App() {
   return <Home taskState={defaultAppState}/>;
@@ -22,5 +23,16 @@ const defaultAppState = [
     link: undefined,
     windowTextContent: loremIpsum,
     windowType: 'text',
-  }
+  },
+  {
+    id: 1,
+    windowOpen: false,
+    inTaskbar: false,
+    focused: false,
+    taskTitle: 'Resume.pdf',
+    iconName: 'pdf',
+    link: undefined,
+    windowType: 'pdf',
+    pdfSource: resume,
+  },
 ] as TaskState[];
