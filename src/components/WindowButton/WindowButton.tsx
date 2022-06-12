@@ -4,7 +4,7 @@ export const WindowButton = ({onClick, color}:WindowButtonProps) =>
 <WindowButtonComponent 
   onClick={onClick} 
   style={{
-    backgroundColor: color
+    '--background-color': color
   } as CSSProperties}
 />
 
@@ -15,7 +15,7 @@ export interface WindowButtonProps {
 
 const WindowButtonComponent = styled.button`
   border-width: 0px;
-  border-radius: 5px;
+  border-radius: 1px;
   margin: 3px;
   width: 20px;
   height: 20px;
@@ -23,9 +23,12 @@ const WindowButtonComponent = styled.button`
   font-weight: bold;
   opacity: 0.5;
   cursor: pointer;
+  background-color: var(--background-color);
+  transition: 0.5s;
 
-  & :hover {
+  &:hover {
+
     opacity: 1.0;
-    transition: 0.5s;
+    transition: 0.3s;
   }
 `;

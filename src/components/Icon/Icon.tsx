@@ -53,8 +53,11 @@ const IconText = styled.p`
      1px -1px 0 #000,
     -1px  1px 0 #000,
      1px  1px 0 #000;
+
+  filter: drop-shadow(3px 3px 3px var(--shadow));
 `;
 
 const IconImage = styled.img`
   height: 75px;
+  filter: drop-shadow(3px 3px 3px var(--shadow));
 `;

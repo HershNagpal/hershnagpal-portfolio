@@ -126,6 +126,7 @@ const WindowContainer = styled.div`
   border-style: solid;
   z-index: 1;
   border-radius: 10px;
+  filter: drop-shadow(10px 10px 10px var(--shadow));
 `;
 
 const TextContent = styled.textarea`
