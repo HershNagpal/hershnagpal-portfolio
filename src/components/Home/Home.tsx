@@ -9,6 +9,7 @@ import { CRTEffect, MovingDistortion, StartupWhite, StartupBlack, InputText, Fas
 export const Home = ({taskState}: HomeProps) => {
   
   const [localTaskState, setLocalTaskState] = useState<TaskState[]>(taskState);
+  const [menuState, setMenuState] = useState<boolean>(true);
 
   const setWindowPosition = (taskId: number, x: number, y: number) => (
     setLocalTaskState(localTaskState.map((task)=>(
@@ -64,6 +65,10 @@ export const Home = ({taskState}: HomeProps) => {
     )))
   };
 
+  const toggleMenu = () => {
+    setMenuState(!menuState);
+  };
+
   return <HomeBackground>
     <CRTEffect />
     <MovingDistortion />
@@ -101,18 +106,25 @@ export const Home = ({taskState}: HomeProps) => {
       />
     ))}
 
-    <Taskbar tasks={
-      localTaskState.map((task) => (
-        {
-          id: task.id,
-          iconName: task.iconName,
-          taskTitle: task.taskTitle,
-          toggleTask: toggleTaskWindow,
-          inTaskbar: task.inTaskbar,
-          windowOpen: task.windowOpen,
-        }
-      ))
-    }/>
+    <Taskbar
+      menuButton={{
+        toggleMenu: () => toggleMenu(),
+        menuOpen: menuState,
+        iconName:'link',
+      }}
+      tasks={
+        localTaskState.map((task) => (
+          {
+            id: task.id,
+            iconName: task.iconName,
+            taskTitle: task.taskTitle,
+            toggleTask: toggleTaskWindow,
+            inTaskbar: task.inTaskbar,
+            windowOpen: task.windowOpen,
+          }
+        ))
+      }
+    />
   </HomeBackground>
 };
 

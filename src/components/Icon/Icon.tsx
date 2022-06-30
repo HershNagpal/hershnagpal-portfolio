@@ -9,7 +9,7 @@ export const Icon = ({iconName, onClick, onDoubleClick, text, id}: IconProps) =>
   onDoubleClick={() => {if (onDoubleClick) onDoubleClick(id)}} 
   onClick={() => {if (onClick) onClick(id)}}
 >
-  <IconImage alt='icon' src={getIcon(iconName)} />
+  <IconImage draggable={false} alt='icon' src={getIcon(iconName)} />
   <IconText>{text}</IconText>
 </IconContainer>;
 

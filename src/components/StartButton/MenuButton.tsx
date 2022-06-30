@@ -1,26 +1,27 @@
-import { useState } from "react";
 import styled, { CSSProperties } from "styled-components";
-import { IconName, getIcon } from "../Icon/Icon";
+import { IconName } from "../Icon/Icon";
+import { useState } from "react";
+import { getIcon } from "../Icon/Icon";
 
-export const Task = ({iconName, taskTitle, toggleTask, windowOpen, id}: TaskProps) => {
+export const MenuButton = ({iconName, menuOpen, toggleMenu}: MenuButtonProps) => {
 
   const [isOpen, setIsOpen] = useState(false);
 
   const handleClick = () => {
     setIsOpen(!isOpen);
-    toggleTask(id);
+    toggleMenu();
   };
 
-  return <TaskContainer 
+  return <TaskContainer
     onClick={handleClick}
     style={{
-      ...(windowOpen && { 
+      ...(menuOpen && { 
         '--top-border': 'inset 2px rgb(12, 5, 77)',
         '--bottom-border': 'inset 2px white',
         '--left-border': 'inset 2px rgb(12, 5, 77)',
         '--right-border': 'inset 2px white',
       }),
-      ...(!windowOpen && { 
+      ...(!menuOpen && { 
         '--top-border': 'ridge 2px white',
         '--bottom-border': 'ridge 2px rgb(12, 5, 77)',
         '--left-border': 'ridge 2px white',
@@ -29,17 +30,14 @@ export const Task = ({iconName, taskTitle, toggleTask, windowOpen, id}: TaskProp
     } as CSSProperties}
   >
     <TaskIcon alt='icon' src={getIcon(iconName)} />
-    <TaskText>{taskTitle}</TaskText>
+    <TaskText>Menu</TaskText>
   </TaskContainer>
-};
+}
 
-export interface TaskProps {
-  id: number
+export interface MenuButtonProps {
+  toggleMenu: () => void
+  menuOpen: boolean
   iconName: IconName
-  taskTitle: string
-  inTaskbar: boolean
-  windowOpen: boolean
-  toggleTask: (id: number) => void
 };
 
 const TaskContainer = styled.div`
@@ -55,8 +53,7 @@ const TaskContainer = styled.div`
   border-left: var(--left-border);
   border-right: var(--right-border);
   width: fit-content;
-  min-width: 200px;
-  max-width: 500px;
+  width: 100px;
 `;
 
 const TaskText = styled.p`

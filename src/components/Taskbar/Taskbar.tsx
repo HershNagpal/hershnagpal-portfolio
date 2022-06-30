@@ -1,9 +1,11 @@
 import styled from "styled-components";
+import { MenuButton, MenuButtonProps } from "../StartButton/MenuButton";
 import { Task, TaskProps } from "../Task/Task";
 
-export const Taskbar = ({tasks}: TaskbarProps) => {
+export const Taskbar = ({tasks, menuButton}: TaskbarProps) => {
 
   return <TaskbarContainer>
+    <MenuButton {...menuButton} />
     {tasks.map((task, index) => (
       task.inTaskbar && <Task key={index} {...task} />
     ))}
@@ -11,6 +13,7 @@ export const Taskbar = ({tasks}: TaskbarProps) => {
 }
 
 export interface TaskbarProps {
+  menuButton: MenuButtonProps
   tasks: TaskProps[]
 }
 
@@ -23,7 +26,7 @@ const TaskbarContainer = styled.div`
   z-index: 3;
   display: flex;
   flex-direction: row;
-  padding: 5px;
+  padding: 5px 10px;
   gap: 5px;
   align-items: center;
   background-color: rgba(103, 46, 209, 0.5);

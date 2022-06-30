@@ -37,7 +37,7 @@ export const Window = ({id, iconName, isFocused, type, windowTitle, textContent,
     >
       <MenuBar className='handle'>
         <MenuBarTitle>
-          <MenuBarIcon src={getIcon(iconName)} />
+          <MenuBarIcon draggable={false} src={getIcon(iconName)} />
           <WindowTitle>{windowTitle}</WindowTitle>
         </MenuBarTitle>
         <ButtonContainer>
@@ -78,7 +78,6 @@ const PDFEmbed = styled.iframe`
 
 const MenuBarIcon = styled.img`
   width: 20px;
-  pointer-events: none;
 `;
 
 const MenuBarTitle = styled.div`
