@@ -10,10 +10,12 @@ const Template: ComponentStory<typeof MenuButton> = (args) => <MenuButton {...ar
 
 export const Clicked = Template.bind({});
 Clicked.args = {
-  
+  iconName: 'link',
+  menuOpen: true,
 };
 
 export const Unclicked = Template.bind({});
 Unclicked.args = {
-
+  iconName: 'link',
+  menuOpen: false,
 }
