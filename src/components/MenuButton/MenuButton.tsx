@@ -3,25 +3,22 @@ import { IconName } from "../Icon/Icon";
 import { useState } from "react";
 import { getIcon } from "../Icon/Icon";
 
-export const MenuButton = ({iconName, menuOpen, toggleMenu}: MenuButtonProps) => {
-
-  const [isOpen, setIsOpen] = useState(false);
-
+export const MenuButton = ({iconName, menuState, toggleMenu}: MenuButtonProps) => {
+  
   const handleClick = () => {
-    setIsOpen(!isOpen);
     toggleMenu();
   };
 
   return <TaskContainer
     onClick={handleClick}
     style={{
-      ...(menuOpen && { 
+      ...(menuState && { 
         '--top-border': 'inset 2px rgb(12, 5, 77)',
         '--bottom-border': 'inset 2px white',
         '--left-border': 'inset 2px rgb(12, 5, 77)',
         '--right-border': 'inset 2px white',
       }),
-      ...(!menuOpen && { 
+      ...(!menuState && { 
         '--top-border': 'ridge 2px white',
         '--bottom-border': 'ridge 2px rgb(12, 5, 77)',
         '--left-border': 'ridge 2px white',
@@ -36,7 +33,7 @@ export const MenuButton = ({iconName, menuOpen, toggleMenu}: MenuButtonProps) =>
 
 export interface MenuButtonProps {
   toggleMenu: () => void
-  menuOpen: boolean
+  menuState: boolean
   iconName: IconName
 };
 

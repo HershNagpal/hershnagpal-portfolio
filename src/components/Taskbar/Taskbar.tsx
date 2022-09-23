@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { MenuButton, MenuButtonProps } from "../StartButton/MenuButton";
+import { MenuButton, MenuButtonProps } from "../MenuButton/MenuButton";
 import { Task, TaskProps } from "../Task/Task";
 
 export const Taskbar = ({tasks, menuButton}: TaskbarProps) => {
@@ -30,6 +30,5 @@ const TaskbarContainer = styled.div`
   gap: 5px;
   align-items: center;
   background-color: rgba(103, 46, 209, 0.5);
-
   border-top: ridge 2px white;
 `;

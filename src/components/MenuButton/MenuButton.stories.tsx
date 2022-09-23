@@ -2,7 +2,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { MenuButton } from './MenuButton';
 
 export default {
-    title: 'Start Button',
+    title: 'Menu Button',
     component: MenuButton,
   } as ComponentMeta<typeof MenuButton>;
 
@@ -11,11 +11,13 @@ const Template: ComponentStory<typeof MenuButton> = (args) => <MenuButton {...ar
 export const Clicked = Template.bind({});
 Clicked.args = {
   iconName: 'link',
-  menuOpen: true,
+  menuState: true,
+  toggleMenu: () => {},
 };
 
 export const Unclicked = Template.bind({});
 Unclicked.args = {
   iconName: 'link',
-  menuOpen: false,
+  menuState: false,
+  toggleMenu: () => {},
 }

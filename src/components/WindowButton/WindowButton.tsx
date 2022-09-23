@@ -15,7 +15,7 @@ export interface WindowButtonProps {
 
 const WindowButtonComponent = styled.button`
   border-width: 0px;
-  border-radius: 1px;
+  border-radius: 3px;
   margin: 3px;
   width: 20px;
   height: 20px;

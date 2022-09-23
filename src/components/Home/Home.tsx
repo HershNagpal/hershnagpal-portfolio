@@ -44,7 +44,13 @@ export const Home = ({taskState}: HomeProps) => {
   const openTask = (taskId: number) => (
     setLocalTaskState(localTaskState.map((task)=>(
       task.id === taskId 
-        ? {...task, inTaskbar: true, windowOpen: true, focused: true}
+        ? {...task, 
+          inTaskbar: true,
+          windowOpen: true, 
+          focused: true,
+          xPosition: 50 + taskId*50,
+          yPosition: 25 + taskId*25,
+        }
         : task
     )))
   );
@@ -109,7 +115,7 @@ export const Home = ({taskState}: HomeProps) => {
     <Taskbar
       menuButton={{
         toggleMenu: () => toggleMenu(),
-        menuOpen: menuState,
+        menuState: menuState,
         iconName:'link',
       }}
       tasks={
