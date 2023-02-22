@@ -1,6 +1,7 @@
 import styled, { CSSProperties } from 'styled-components';
 import { IconName } from '../Icon/Icon';
 import { WindowButton } from '../WindowButton/WindowButton';
+import { TextContent } from './TextContent';
 import Draggable, { DraggableEventHandler } from 'react-draggable';
 import { getIcon } from '../Icon/Icon';
 
@@ -45,7 +46,7 @@ export const Window = ({id, iconName, isFocused, type, windowTitle, textContent,
           <WindowButton color={'#e85454'} onClick={() => onClose(id)}/>
         </ButtonContainer>
       </MenuBar>
-      {type==='text' && textContent && <TextContent defaultValue={textContent} />}
+      {type==='text' && textContent && <TextContent content={textContent} />}
       {type==='pdf' && pdfSource && <PDFEmbed src={pdfSource+'#zoom=70'} />}
     </WindowContainer>
   </Draggable>
@@ -126,23 +127,4 @@ const WindowContainer = styled.div`
   z-index: 1;
   border-radius: 10px;
   filter: drop-shadow(10px 10px 10px var(--shadow));
-`;
-
-const TextContent = styled.textarea`
-  padding: 5px;
-  height: var(--window-height);
-  width: var(--window-width);
-  min-height: 100px;
-  min-width: 200px;
-  max-height: 100%;
-  background-color: white;
-  overflow: scroll;
-  border-top: inset 3px black;
-  border-left: inset 3px black;
-  border-bottom: inset 3px white;
-  border-right: inset 3px white;
-  border-radius: 0px 0px 8px 8px;
-  font-family: 'fixedsys';
-  font-size: 20px;
-  outline: none;
 `;
