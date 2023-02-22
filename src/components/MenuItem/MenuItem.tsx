@@ -16,7 +16,13 @@ export interface MenuItemProps {
 const MenuItemContainer = styled.div`
   display: flex;
   width: 100%;
-  padding: 5px;
+  padding: 5px 15px;
+  height: 50px;
+  border: 1px black solid;
+  &:hover {
+    background: blue;
+    transition: 0.2s;
+  }
 `;
 
 const MenuText = styled.p`

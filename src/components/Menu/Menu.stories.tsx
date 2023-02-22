@@ -11,4 +11,14 @@ const Template: ComponentStory<typeof Menu> = (args) => <Menu {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   menuState: true,
+  menuItems: [
+    {
+      title: "Documents",
+      onClick: () => {},
+    },
+    {
+      title: "Pictures",
+      onClick: () => {},
+    },
+  ]
 };
