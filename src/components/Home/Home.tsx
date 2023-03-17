@@ -55,14 +55,6 @@ export const Home = ({taskState}: HomeProps) => {
     )))
   );
 
-  const focusTask = (taskId: number) => (
-    localTaskState.map((task)=>(
-      task.id === taskId 
-        ? {...task, windowOpen: true, focused: true}
-        : {...task, focused: false}
-    ))
-  );
-
   const toggleTaskWindow = (taskId: number) => {
     setLocalTaskState(localTaskState.map((task)=>(
       task.id === taskId 
@@ -111,7 +103,6 @@ export const Home = ({taskState}: HomeProps) => {
         pdfSource={task.pdfSource}
         xPosition={task.xPosition}
         yPosition={task.yPosition}
-        focusWindow={focusTask}
       />
     ))}
 
