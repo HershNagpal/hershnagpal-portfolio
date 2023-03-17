@@ -14,8 +14,8 @@ export const Home = ({taskState}: HomeProps) => {
   const setWindowPosition = (taskId: number, x: number, y: number) => (
     setLocalTaskState(localTaskState.map((task)=>(
       task.id === taskId 
-        ? {...task, xPosition: x, yPosition: y}
-        : task
+        ? {...task, xPosition: x, yPosition: y, focused: true}
+        : {...task, focused: false}
     )))
   );
 
@@ -23,7 +23,7 @@ export const Home = ({taskState}: HomeProps) => {
     setLocalTaskState(localTaskState.map((task)=>(
       task.id === taskId 
         ? {...task, windowOpen: false, focused: false}
-        : task
+        : {...task, focused: false}
     )))
   );
 
@@ -37,7 +37,7 @@ export const Home = ({taskState}: HomeProps) => {
             xPosition: 0,
             yPosition: 0,
           }
-        : task
+        : {...task, focused: false}
     )))
   );
 
@@ -51,7 +51,7 @@ export const Home = ({taskState}: HomeProps) => {
           xPosition: 50 + taskId*50,
           yPosition: 25 + taskId*25,
         }
-        : task
+        : {...task, focused: false}
     )))
   );
 
@@ -66,8 +66,10 @@ export const Home = ({taskState}: HomeProps) => {
   const toggleTaskWindow = (taskId: number) => {
     setLocalTaskState(localTaskState.map((task)=>(
       task.id === taskId 
-        ? {...task, windowOpen: !task.windowOpen, focused: true}
-        : task
+        ? task.windowOpen
+          ? {...task, windowOpen: false, focused: false}
+          : {...task, windowOpen: true, focused: true}
+        : {...task, focused: false}
     )))
   };
 
@@ -109,6 +111,7 @@ export const Home = ({taskState}: HomeProps) => {
         pdfSource={task.pdfSource}
         xPosition={task.xPosition}
         yPosition={task.yPosition}
+        focusWindow={focusTask}
       />
     ))}
 

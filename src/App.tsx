@@ -13,7 +13,7 @@ export default App;
 
 const defaultAppState = [
   {
-    windowOpen: false,
+    windowOpen: true,
     inTaskbar: true,
     focused: true,
     taskTitle: 'About.txt',
@@ -21,6 +21,8 @@ const defaultAppState = [
     link: undefined,
     windowTextContent: strings.loremIpsum,
     windowType: 'text',
+    xPosition: 150,
+    yPosition: 100,
   },
   {
     id: 1,

@@ -6,7 +6,7 @@ import Draggable, { DraggableEventHandler } from 'react-draggable';
 import { getIcon } from '../Icon/Icon';
 
 export const Window = ({id, iconName, isFocused, type, windowTitle, textContent, pdfSource,
-  onClose, onMinimize, xPosition, yPosition, setWindowPosition}: WindowProps) => {
+  onClose, onMinimize, xPosition, yPosition, setWindowPosition, focusWindow}: WindowProps) => {
 
   const handleMinimize = () => {
     onMinimize(id)
@@ -23,6 +23,7 @@ export const Window = ({id, iconName, isFocused, type, windowTitle, textContent,
     handle='.handle'
     defaultPosition={xPosition && yPosition ? {x: xPosition, y: yPosition}: undefined}
     onStop={handleStop}
+    onMouseDown={(e) => focusWindow(id)}
   >
     <WindowContainer
       style={{
@@ -34,6 +35,12 @@ export const Window = ({id, iconName, isFocused, type, windowTitle, textContent,
           '--window-height': '600px',
           '--window-width': '600px',
         }),
+        ...(isFocused && {
+          'zIndex': '3'
+        }),
+        ...(!isFocused && {
+          'zIndex': '1'
+        })
       } as CSSProperties }
     >
       <MenuBar className='handle'>
@@ -64,6 +71,7 @@ export interface WindowProps {
   xPosition?: number
   yPosition?: number
   pdfSource?: string
+  focusWindow: (taskId: number) => void
 };
 
 export type WindowType = 'text' | 'pdf' | 'folder';

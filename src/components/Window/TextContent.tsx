@@ -1,7 +1,8 @@
 import styled from "styled-components";
+import { Icon } from "../Icon/Icon";
 
 export const TextContent = ({content}: TextContentProps) => (
-  <StyledTextContent contentEditable>
+  <StyledTextContent contentEditable suppressContentEditableWarning={true}>
     {content}
   </StyledTextContent>
 )
