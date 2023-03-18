@@ -28,4 +28,5 @@ const StyledTextContent = styled.div`
   font-family: 'fixedsys';
   font-size: 20px;
   outline: none;
+  white-space: pre-line;
 `;
