@@ -5,8 +5,8 @@ import { TextContent } from './TextContent';
 import Draggable, { DraggableEventHandler } from 'react-draggable';
 import { getIcon } from '../Icon/Icon';
 
-export const Window = ({id, iconName, isFocused, type, windowTitle, textContent, pdfSource,
-  onClose, onMinimize, xPosition, yPosition, setWindowPosition}: WindowProps) => {
+export const Window = ({id, iconName, isFocused, type, windowTitle, textContent,
+  onClose, onMinimize, xPosition, yPosition, setWindowPosition, focusWindow}: WindowProps) => {
 
   const handleMinimize = () => {
     onMinimize(id)
@@ -23,16 +23,14 @@ export const Window = ({id, iconName, isFocused, type, windowTitle, textContent,
     handle='.handle'
     defaultPosition={xPosition && yPosition ? {x: xPosition, y: yPosition}: undefined}
     onStop={handleStop}
+    onStart={() => focusWindow(id)}
   >
     <WindowContainer
+      onClick={() => focusWindow(id)}
       style={{
         ...(type === 'text' && { 
           '--window-height': '500px',
           '--window-width': '700px',
-        }),
-        ...(type === 'pdf' && { 
-          '--window-height': '600px',
-          '--window-width': '600px',
         }),
         ...(isFocused && {
           'zIndex': '3'
@@ -53,7 +51,6 @@ export const Window = ({id, iconName, isFocused, type, windowTitle, textContent,
         </ButtonContainer>
       </MenuBar>
       {type==='text' && textContent && <TextContent content={textContent} />}
-      {type==='pdf' && pdfSource && <PDFEmbed src={pdfSource+'#zoom=70'} />}
     </WindowContainer>
   </Draggable>
 };
@@ -69,19 +66,10 @@ export interface WindowProps {
   setWindowPosition: (taskId: number, x: number, y: number) => void
   xPosition?: number
   yPosition?: number
-  pdfSource?: string
+  focusWindow: (taskId: number) => void
 };
 
-export type WindowType = 'text' | 'pdf' | 'folder';
-
-const PDFEmbed = styled.iframe`
-  margin: 3px;
-  width: 100%;
-  object-fit: scale-down;
-  height: var(--window-height);
-  width: var(--window-width);
-  border-radius: 0px 0px 8px 8px;
-`;
+export type WindowType = 'text' | 'folder';
 
 const MenuBarIcon = styled.img`
   width: 20px;

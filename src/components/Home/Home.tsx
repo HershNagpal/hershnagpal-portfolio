@@ -12,6 +12,14 @@ export const Home = ({taskState}: HomeProps) => {
   const [localTaskState, setLocalTaskState] = useState<TaskState[]>(taskState);
   const [menuState, setMenuState] = useState<boolean>(true);
 
+  const focusWindow = (taskId: number) => (
+    setLocalTaskState(localTaskState.map((task)=>(
+      task.id === taskId 
+        ? {...task, focused: true}
+        : {...task, focused: false}
+    )))
+  );
+
   const setWindowPosition = (taskId: number, x: number, y: number) => (
     setLocalTaskState(localTaskState.map((task)=>(
       task.id === taskId 
@@ -35,8 +43,6 @@ export const Home = ({taskState}: HomeProps) => {
             inTaskbar: false, 
             windowOpen: false, 
             focused: false,
-            xPosition: 0,
-            yPosition: 0,
           }
         : {...task, focused: false}
     )))
@@ -49,8 +55,8 @@ export const Home = ({taskState}: HomeProps) => {
           inTaskbar: true,
           windowOpen: true, 
           focused: true,
-          xPosition: 50 + taskId*50,
-          yPosition: 25 + taskId*25,
+          xPosition: taskId*150,
+          yPosition: taskId*50,
         }
         : {...task, focused: false}
     )))
@@ -106,9 +112,9 @@ export const Home = ({taskState}: HomeProps) => {
         onMinimize={minimizeTask}
         setWindowPosition={setWindowPosition}
         textContent={task.windowTextContent}
-        pdfSource={task.pdfSource}
         xPosition={task.xPosition}
         yPosition={task.yPosition}
+        focusWindow={focusWindow}
       />
     ))}
 

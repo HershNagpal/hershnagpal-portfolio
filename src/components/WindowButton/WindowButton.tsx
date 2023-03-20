@@ -2,7 +2,10 @@ import styled, { CSSProperties } from "styled-components";
 
 export const WindowButton = ({onClick, color}:WindowButtonProps) => 
 <WindowButtonComponent 
-  onClick={onClick} 
+  onClick={(e) => {
+    e.stopPropagation(); 
+    onClick()
+  }} 
   style={{
     '--background-color': color
   } as CSSProperties}
@@ -25,6 +28,7 @@ const WindowButtonComponent = styled.button`
   cursor: pointer;
   background-color: var(--background-color);
   transition: 0.5s;
+  z-index: 5;
 
   &:hover {
 
