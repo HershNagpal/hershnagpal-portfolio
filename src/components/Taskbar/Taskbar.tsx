@@ -5,17 +5,17 @@ import { Task, TaskProps } from "../Task/Task";
 export const Taskbar = ({tasks, menuButton}: TaskbarProps) => {
 
   return <TaskbarContainer>
-    <MenuButton {...menuButton} />
+    {/* <MenuButton {...menuButton} /> */}
     {tasks.map((task, index) => (
       task.inTaskbar && <Task key={index} {...task} />
     ))}
   </TaskbarContainer>
-}
+};
 
 export interface TaskbarProps {
   menuButton: MenuButtonProps
   tasks: TaskProps[]
-}
+};
 
 const TaskbarContainer = styled.div`
   position: absolute;

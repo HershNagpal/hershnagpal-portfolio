@@ -3,6 +3,7 @@ import { Icon } from "../Icon/Icon";
 import { Taskbar } from "../Taskbar/Taskbar";
 import { TaskState } from "../../model/taskState";
 import { Window } from "../Window/Window";
+import { InfoBar } from "../InfoBar/InfoBar";
 import { useState } from "react";
 import { CRTEffect, MovingDistortion, StartupWhite, StartupBlack, InputText, FastMovingDistortion } from "../Animation/Animation";
 
@@ -80,7 +81,7 @@ export const Home = ({taskState}: HomeProps) => {
     <StartupBlack />
     <InputText>INPUT 1</InputText>
     <FastMovingDistortion />
-
+    <InfoBar/>
     {localTaskState.map((task, index) => (
       <Icon 
         id={task.id}
@@ -147,7 +148,7 @@ const HomeBackground = styled.div`
     100% {
       background-position: 0% 50%; } 
   }
-
+  padding-top: 45px;
   min-height: 100vh;
   min-width: 100vw;
   background-color: aliceblue;
