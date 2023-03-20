@@ -12,6 +12,10 @@ export const projects = `This Website:
   An iOS app I wrote to learn the basics of Swift and iOS development. Shows recent movies and recommendations based on the TMDB API. Also supports favorites and search.
   https://github.com/HershNagpal/TheMovieDatabase
 
+  Egyptian Rat-Screw:
+  An iOS version of my favorite card game, without the hand-slapping, written in Swift using SwiftUI and Combine. Currently in progress.
+  https://github.com/HershNagpal/card-app
+
   Library Management System: 
   A proof of concept project done to apply Object-Oriented design principles in an Agile SCRUM work environment. The app simulates a library database, which tracks books and library members, and helps with 'bookkeeping.'
   https://github.com/HershNagpal/lbms
