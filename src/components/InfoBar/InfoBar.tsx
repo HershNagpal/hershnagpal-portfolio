@@ -4,7 +4,7 @@ import Clock from 'react-live-clock'
 export const InfoBar = ({}: InfoBarProps) =>
 <InfoBarContainer>
   <NameTitle>Hersh Nagpal</NameTitle>
-  <StyledClock format={'ddd Do h:mm A'} ticking={true} />
+  <StyledClock format={'ddd MMM D h:mm A'} ticking={true} />
 </InfoBarContainer>;
 
 export interface InfoBarProps {
