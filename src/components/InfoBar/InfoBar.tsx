@@ -12,8 +12,8 @@ export interface InfoBarProps {
 };
 
 const NameTitle = styled.h1`
-  font-family: 'vt323';
-  font-size: 32px;
+  font-family: 'fixedsys';
+  font-size: 26px;
   color: white;
   white-space: nowrap;
   overflow: hidden;
