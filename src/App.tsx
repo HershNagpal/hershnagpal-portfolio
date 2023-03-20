@@ -4,9 +4,14 @@ import './styles/colors.css';
 import './styles/global.css';
 import resume from './assets/content/Hersh_Nagpal_Resume.pdf';
 import * as strings from './strings';
+import useIsMobile from "./hooks/useIsMobile";
 
 function App() {
-  return <Home taskState={defaultAppState}/>;
+  const isMobile = useIsMobile();
+
+  return isMobile 
+    ? <Home taskState={defaultAppState}/>
+    : <Home taskState={defaultAppState}/>;
 };
 
 export default App;
@@ -40,7 +45,7 @@ const defaultAppState = [
     inTaskbar: false,
     focused: false,
     taskTitle: 'Resume.pdf',
-    iconName: 'link',
+    iconName: 'pdf',
     link: resume,
   },
   {
