@@ -13,6 +13,7 @@ export default App;
 
 const defaultAppState = [
   {
+    id: 1,
     windowOpen: true,
     inTaskbar: true,
     focused: true,
@@ -21,19 +22,10 @@ const defaultAppState = [
     windowTextContent: strings.welcome,
     windowType: 'text',
     xPosition: 150,
-    yPosition: 100,
+    yPosition: 50,
   },
   {
-    id: 1,
-    windowOpen: false,
-    inTaskbar: false,
-    focused: false,
-    taskTitle: 'Resume.pdf',
-    iconName: 'link',
-    link: resume,
-  },
-  {
-    id: 3,
+    id: 2,
     windowOpen: false,
     inTaskbar: false,
     focused: true,
@@ -41,6 +33,15 @@ const defaultAppState = [
     iconName: 'text',
     windowTextContent: strings.projects,
     windowType: 'text',
+  },
+  {
+    id: 3,
+    windowOpen: false,
+    inTaskbar: false,
+    focused: false,
+    taskTitle: 'Resume.pdf',
+    iconName: 'link',
+    link: resume,
   },
   {
     id: 4,

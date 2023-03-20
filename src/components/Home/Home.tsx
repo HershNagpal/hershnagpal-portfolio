@@ -43,8 +43,6 @@ export const Home = ({taskState}: HomeProps) => {
             inTaskbar: false, 
             windowOpen: false, 
             focused: false,
-            xPosition: 0,
-            yPosition: 0,
           }
         : {...task, focused: false}
     )))
@@ -57,8 +55,8 @@ export const Home = ({taskState}: HomeProps) => {
           inTaskbar: true,
           windowOpen: true, 
           focused: true,
-          xPosition: 50 + taskId*50,
-          yPosition: 25 + taskId*25,
+          xPosition: taskId*150,
+          yPosition: taskId*50,
         }
         : {...task, focused: false}
     )))
