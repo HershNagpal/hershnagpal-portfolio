@@ -1,10 +1,6 @@
 export const loremIpsum = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
 
-export const projects = `
-  All of these projects are available on my GitHub: 
-  https://github.com/HershNagpal
-
-  This Website: 
+export const projects = `This Website: 
   This website was written using completely functional TypeScript in React. There is no data mutation anywhere in this project! This website has gone through several iterations as I improved my coding ability, all available on my GitHib.
   https://github.com/HershNagpal/hershnagpal-portfolio
 

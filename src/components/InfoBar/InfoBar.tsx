@@ -1,14 +1,11 @@
 import styled from "styled-components";
-import { useState } from "react";
+import Clock from 'react-live-clock'
 
-export const InfoBar = ({}: InfoBarProps) => {
-
-  const [dateTime, setDateTime] = useState<string>("");
-
-  return <InfoBarContainer>
-    <NameTitle>Hersh Nagpal</NameTitle>
-  </InfoBarContainer>
-};
+export const InfoBar = ({}: InfoBarProps) =>
+<InfoBarContainer>
+  <NameTitle>Hersh Nagpal</NameTitle>
+  <StyledClock format={'ddd Do h:mm A'} ticking={true} />
+</InfoBarContainer>;
 
 export interface InfoBarProps {
 
@@ -29,9 +26,9 @@ const NameTitle = styled.h1`
      1px  1px 0 #000;
 `;
 
-const TimeDate = styled.div`
-  font-family: 'vt323';
-  font-size: 32px;
+const StyledClock = styled(Clock)`
+  font-family: 'fixedsys';
+  font-size: 20px;
   color: white;
   white-space: nowrap;
   overflow: hidden;
