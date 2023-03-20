@@ -7,7 +7,7 @@ export default {
     parameters: { paddings: { disable: true } },
   } as ComponentMeta<typeof InfoBar>;
 
-const Template: ComponentStory<typeof InfoBar> = (args) => <InfoBar {...args} />;
+const Template: ComponentStory<typeof InfoBar> = (args) => <InfoBar />;
 
 export const Default = Template.bind({});
 Default.args = {
