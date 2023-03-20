@@ -53,7 +53,7 @@ export const Window = ({id, iconName, isFocused, type, windowTitle, textContent,
         </ButtonContainer>
       </MenuBar>
       {type==='text' && textContent && <TextContent content={textContent} />}
-      {type==='pdf' && pdfSource && <PDFEmbed src={pdfSource+'#zoom=70'} />}
+      {type==='pdf' && pdfSource && <PDFEmbed type='application/pdf' src={pdfSource+'#zoom=70'} />}
     </WindowContainer>
   </Draggable>
 };
@@ -74,7 +74,7 @@ export interface WindowProps {
 
 export type WindowType = 'text' | 'pdf' | 'folder';
 
-const PDFEmbed = styled.iframe`
+const PDFEmbed = styled.embed`
   margin: 3px;
   width: 100%;
   object-fit: scale-down;
