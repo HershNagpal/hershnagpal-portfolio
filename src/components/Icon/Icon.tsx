@@ -4,10 +4,15 @@ import iconLink from '../../assets/images/icons/link.svg';
 import iconPdf from '../../assets/images/icons/pdf.svg';
 import iconText from '../../assets/images/icons/text.svg';
 
-export const Icon = ({iconName, onClick, onDoubleClick, text, id}: IconProps) => 
+export const Icon = ({iconName, openTask, openLink, text, id, link}: IconProps) => 
 <IconContainer 
-  onDoubleClick={() => {if (onDoubleClick) onDoubleClick(id)}} 
-  onClick={() => {if (onClick) onClick(id)}}
+  onDoubleClick={
+    () => openLink && link 
+      ? openLink(link)
+      : openTask 
+        ? openTask(id)
+        : console.log("No link or task")
+  } 
 >
   <IconImage draggable={false} alt='icon' src={getIcon(iconName)} />
   <IconText>{text}</IconText>
@@ -16,9 +21,10 @@ export const Icon = ({iconName, onClick, onDoubleClick, text, id}: IconProps) =>
 export interface IconProps {
   id: number,
   iconName: IconName
-  onDoubleClick?: (id: number) => void
-  onClick?: (id: number) => void
+  openTask?: (id: number) => void
+  openLink?: (link: string) => void
   text: string
+  link?: string
 }; 
 
 export type IconName = 'folder' | 'link' | 'pdf' | 'text';

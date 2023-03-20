@@ -55,7 +55,7 @@ export const Home = ({taskState}: HomeProps) => {
     )))
   );
 
-  const toggleTaskWindow = (taskId: number) => {
+  const toggleTaskWindow = (taskId: number) => (
     setLocalTaskState(localTaskState.map((task)=>(
       task.id === taskId 
         ? task.windowOpen
@@ -63,7 +63,11 @@ export const Home = ({taskState}: HomeProps) => {
           : {...task, windowOpen: true, focused: true}
         : {...task, focused: false}
     )))
-  };
+  );
+
+  const openLink = (link: string) => (
+    window.open(link)
+  );
 
   const toggleMenu = () => {
     setMenuState(!menuState);
@@ -83,13 +87,14 @@ export const Home = ({taskState}: HomeProps) => {
         key={index}
         iconName={task.iconName}
         text={task.taskTitle}
-        // onClick={toggleTaskWindow}
-        onDoubleClick={openTask}
+        openTask={openTask}
+        openLink={openLink}
+        link={task.link}
       />
     ))}
 
     {localTaskState.map((task, index) => (
-      task.windowOpen && <Window 
+      task.windowOpen && task.windowType && <Window 
         id={task.id}
         isFocused={task.focused}
         key={index}

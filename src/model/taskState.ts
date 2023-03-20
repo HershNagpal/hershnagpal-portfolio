@@ -10,7 +10,7 @@ export type TaskState = {
   iconName: IconName
   link?: string
   windowTextContent?: string
-  windowType: WindowType
+  windowType?: WindowType
   xPosition?: number
   yPosition?: number
   pdfSource?: string
