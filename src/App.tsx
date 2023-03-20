@@ -29,9 +29,8 @@ const defaultAppState = [
     inTaskbar: false,
     focused: false,
     taskTitle: 'Resume.pdf',
-    iconName: 'pdf',
-    windowType: 'pdf',
-    pdfSource: resume,
+    iconName: 'link',
+    link: resume,
   },
   {
     id: 3,

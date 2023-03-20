@@ -5,7 +5,7 @@ import { TextContent } from './TextContent';
 import Draggable, { DraggableEventHandler } from 'react-draggable';
 import { getIcon } from '../Icon/Icon';
 
-export const Window = ({id, iconName, isFocused, type, windowTitle, textContent, pdfSource,
+export const Window = ({id, iconName, isFocused, type, windowTitle, textContent,
   onClose, onMinimize, xPosition, yPosition, setWindowPosition}: WindowProps) => {
 
   const handleMinimize = () => {
@@ -30,10 +30,6 @@ export const Window = ({id, iconName, isFocused, type, windowTitle, textContent,
           '--window-height': '500px',
           '--window-width': '700px',
         }),
-        ...(type === 'pdf' && { 
-          '--window-height': '600px',
-          '--window-width': '600px',
-        }),
         ...(isFocused && {
           'zIndex': '3'
         }),
@@ -53,7 +49,6 @@ export const Window = ({id, iconName, isFocused, type, windowTitle, textContent,
         </ButtonContainer>
       </MenuBar>
       {type==='text' && textContent && <TextContent content={textContent} />}
-      {type==='pdf' && pdfSource && <PDFEmbed type='application/pdf' src={pdfSource+'#zoom=70'} />}
     </WindowContainer>
   </Draggable>
 };
@@ -69,19 +64,9 @@ export interface WindowProps {
   setWindowPosition: (taskId: number, x: number, y: number) => void
   xPosition?: number
   yPosition?: number
-  pdfSource?: string
 };
 
-export type WindowType = 'text' | 'pdf' | 'folder';
-
-const PDFEmbed = styled.embed`
-  margin: 3px;
-  width: 100%;
-  object-fit: scale-down;
-  height: var(--window-height);
-  width: var(--window-width);
-  border-radius: 0px 0px 8px 8px;
-`;
+export type WindowType = 'text' | 'folder';
 
 const MenuBarIcon = styled.img`
   width: 20px;

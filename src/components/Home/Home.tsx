@@ -106,7 +106,6 @@ export const Home = ({taskState}: HomeProps) => {
         onMinimize={minimizeTask}
         setWindowPosition={setWindowPosition}
         textContent={task.windowTextContent}
-        pdfSource={task.pdfSource}
         xPosition={task.xPosition}
         yPosition={task.yPosition}
       />
