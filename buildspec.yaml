@@ -2,8 +2,8 @@ version: 0.2
 
 phases:
   install:
-   runtime-versions:
-      nodejs: 19.x
+    runtime-versions:
+      nodejs: 16.x
   pre_build:
     commands:
       - echo Installing dependencies...
@@ -11,7 +11,7 @@ phases:
   build:
     commands:
       - echo Building...
-      - npm build
+      - npm run build
 artifacts:
   files:
     - "**/*"
