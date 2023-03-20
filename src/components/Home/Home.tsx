@@ -12,6 +12,14 @@ export const Home = ({taskState}: HomeProps) => {
   const [localTaskState, setLocalTaskState] = useState<TaskState[]>(taskState);
   const [menuState, setMenuState] = useState<boolean>(true);
 
+  const focusWindow = (taskId: number) => (
+    setLocalTaskState(localTaskState.map((task)=>(
+      task.id === taskId 
+        ? {...task, focused: true}
+        : {...task, focused: false}
+    )))
+  );
+
   const setWindowPosition = (taskId: number, x: number, y: number) => (
     setLocalTaskState(localTaskState.map((task)=>(
       task.id === taskId 
@@ -108,6 +116,7 @@ export const Home = ({taskState}: HomeProps) => {
         textContent={task.windowTextContent}
         xPosition={task.xPosition}
         yPosition={task.yPosition}
+        focusWindow={focusWindow}
       />
     ))}
 

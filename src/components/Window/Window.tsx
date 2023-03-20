@@ -6,7 +6,7 @@ import Draggable, { DraggableEventHandler } from 'react-draggable';
 import { getIcon } from '../Icon/Icon';
 
 export const Window = ({id, iconName, isFocused, type, windowTitle, textContent,
-  onClose, onMinimize, xPosition, yPosition, setWindowPosition}: WindowProps) => {
+  onClose, onMinimize, xPosition, yPosition, setWindowPosition, focusWindow}: WindowProps) => {
 
   const handleMinimize = () => {
     onMinimize(id)
@@ -23,8 +23,10 @@ export const Window = ({id, iconName, isFocused, type, windowTitle, textContent,
     handle='.handle'
     defaultPosition={xPosition && yPosition ? {x: xPosition, y: yPosition}: undefined}
     onStop={handleStop}
+    onStart={() => focusWindow(id)}
   >
     <WindowContainer
+      onClick={() => focusWindow(id)}
       style={{
         ...(type === 'text' && { 
           '--window-height': '500px',
@@ -64,6 +66,7 @@ export interface WindowProps {
   setWindowPosition: (taskId: number, x: number, y: number) => void
   xPosition?: number
   yPosition?: number
+  focusWindow: (taskId: number) => void
 };
 
 export type WindowType = 'text' | 'folder';
