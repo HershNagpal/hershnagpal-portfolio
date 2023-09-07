@@ -4,6 +4,10 @@ export const projects = `This Website:
   This website was written using completely functional TypeScript in React. There is no data mutation anywhere in this project! This website has gone through several iterations as I improved my coding ability, all available on my GitHib.
   https://github.com/HershNagpal/hershnagpal-portfolio
 
+  Egyptian Rat-Screw:
+  An iOS version of my favorite card game, without the hand-slapping, written in Swift using SwiftUI and Combine. Download it on the App Store!
+  https://github.com/HershNagpal/card-app
+
   Carrot Wolf: 
   A rogue-like web game created by me and Blaze Wiseman, also written in fully functional JavaScript, with Redux for state management. The first iteration is publicly hosted at the link above. It is being rewritten using the lessons we learned writing the first iteration.
   https://hershnagpal.github.io/carrot-client-old/
@@ -11,10 +15,6 @@ export const projects = `This Website:
   The Movie Database:
   An iOS app I wrote to learn the basics of Swift and iOS development. Shows recent movies and recommendations based on the TMDB API. Also supports favorites and search.
   https://github.com/HershNagpal/TheMovieDatabase
-
-  Egyptian Rat-Screw:
-  An iOS version of my favorite card game, without the hand-slapping, written in Swift using SwiftUI and Combine. Currently in progress.
-  https://github.com/HershNagpal/card-app
 
   Library Management System: 
   A proof of concept project done to apply Object-Oriented design principles in an Agile SCRUM work environment. The app simulates a library database, which tracks books and library members, and helps with 'bookkeeping.'
